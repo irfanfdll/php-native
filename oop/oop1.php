@@ -1,11 +1,13 @@
 <?php
 // mengedintefikasi sebuah kelas
 class Kucing{
+    //property atau atribute
     public $warna ="Coklat";
     public $jumlahKaki = "4";
     public $jenisBulu = "panjang";
     public $makananfavorit = "Ikan Pindang ";
 
+    //membyat method
     public function bersuara(){
         return "meowng....meowng.....meowng";
     }

@@ -23,10 +23,10 @@
     }
     //membuat object instalasi object 
     $segitiga1 = new segitiga();
-    echo "Alas Segita : ".$segitiga1 -> alas. "<br>";
+    echo Sisi 2 : ".$segitiga1 -> b  . "<br>";
+    echo ""Alas Segita : ".$segitiga1 -> alas. "<br>";
     echo "Tinggi Segitiga : ".$segitiga1 -> tinggi. "<br>";
     echo "Sisi 1 : ".$segitiga1 -> a  . "<br>";
-    echo "Sisi 2 : ".$segitiga1 -> b  . "<br>";
     echo "Sisi 3 : ".$segitiga1 -> c  . "<br>";
     echo "Luas Segitiga : ".$segitiga1 -> luassegitiga(). "<br>";
     echo "Keliling Segitiga : ".$segitiga1 -> kelilingsegitiga(). "<br>";
