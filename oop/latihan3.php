@@ -30,6 +30,7 @@
     </form>
 </body>
 </html>
+
 <?php 
 if (isset($_POST['proses'])) {
     $bilangan1 = $_POST['bilangan1'];
@@ -57,7 +58,7 @@ class Aritmatika{
             return ($this->bilangan1 * $this->bilangan2 );
         }
         public function bagi()
-        {
+       {
             
             return ($this->bilangan1 / $this->bilangan2 );
         }
