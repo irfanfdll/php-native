@@ -1,38 +1,38 @@
 <?php
-// buat class induk: komputer
-class komputer
+// buat class induk: Komputer
+class Komputer
 {
 
-    public $merk;
-    public $processor;
-    public $memory;
+    public $Merk;
+    public $Processor;
+    public $Memory;
 
-    public function beli_komputer()
+    public function beliKomputer()
     {
-        return "Beli komputer baru";
+        return "Beli Komputer Baru";
     }
 }
 
-// turunkan class komputer ke laptop
-class laptop extends komputer
+// turunkan class Komputer ke Laptop
+class Laptop extends Komputer
 {
 
-    public function lihat_spec()
+    public function lihatSpec()
     {
-        return "merk: $this->merk, processor: $this->processor,
-     memory: $this->memory";
+        return "Merk: $this->Merk, Processor: $this->Processor,
+     Memory: $this->Memory";
     }
 }
 
-// buat objek dari class laptop (instansiasi)
-$laptop_baru = new laptop();
+// buat objek dari class Laptop (instansiasi)
+$laptop = new Laptop();
 
 // isi property objek
-$laptop_baru->merk = "acer";
-$laptop_baru->processor = "intel core i5";
-$laptop_baru->memory = "2 GB";
+$laptop->Merk = "Asus";
+$laptop->Processor = "Intel Core I5";
+$laptop->Memory = "4 GB";
 
 //panggil method objek
-echo $laptop_baru->beli_komputer();
+echo $laptop->beliKomputer();
 echo "<br />";
-echo $laptop_baru->lihat_spec();
+echo $laptop->lihatSpec();

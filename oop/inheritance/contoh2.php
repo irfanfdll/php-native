@@ -4,7 +4,7 @@ class komputer
 {
     protected function beli_komputer()
     {
-        return "Beli komputer baru";
+        return "Beli Komputer Baru";
     }
 }
 
@@ -13,7 +13,7 @@ class laptop extends komputer
 {
     protected function beli_laptop()
     {
-        return "Beli laptop baru";
+        return "Beli Laptop Baru";
     }
 }
 
@@ -22,7 +22,7 @@ class chromebook extends laptop
 {
     protected function beli_chromebook()
     {
-        return "Beli chromebook baru";
+        return "Beli Chromebook Baru";
     }
 
     public function beli_semua()
