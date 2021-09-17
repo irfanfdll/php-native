@@ -75,6 +75,6 @@ if (isset($_POST['Input'])) {
 //panggil method objek
     echo $sifat->menampilkanSifat();
 
-// $sifat->sifatMahluk();
+// $sifat->sifatMahluk()
     // Fatal error: Call to protected method Manusia::sifatMahluk()
 }
