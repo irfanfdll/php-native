@@ -35,8 +35,6 @@
                  <td><input type="submit" name="Input" value="Input"><hr></td>
              </tr>
 
-
-
  </FORM>
 
 <?php
