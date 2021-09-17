@@ -8,35 +8,34 @@
              <tr>
                  <td>Nama</td>
                  <td>:</td>
-                 <td><input type="text" name="nama"></td>
+                 <td><input type="text" name="nama" required></td>
              </tr>
              <tr>
                  <td>Nim</td>
                  <td>:</td>
-                 <td><input type="number" name="nim"></td>
+                 <td><input type="number" name="nim"required></td>
              </tr>
              <tr>
                  <td>Nilai</td>
                  <td>:</td>
-                 <td><input type="number" name="nilai"></td>
+                 <td><input type="number" name="nilai" min="0" max="100" required></td>
              </tr>
              <tr>
                  <td>Dosen</td>
                  <td>:</td>
-                 <td><input type="text" name="dosen"></td>
+                 <td><input type="text" name="dosen"required></td>
              </tr>
              <tr>
                  <td>Mata Kuliah</td>
                  <td>:</td>
-                 <td><input type="text" name="matakuliah"></td>
+                 <td><input type="text" name="matakuliah"required></td>
              </tr>
 
          </table>
      </fieldset>
  <input type="submit" name="Input" value="Input">
  </FORM>
- </body>
-</html>
+
 <?php
 if (isset($_POST['Input'])) {
     $nama = $_POST['nama'];
@@ -88,8 +87,8 @@ if (isset($_POST['Input'])) {
     $nilai = new mataKuliah($nama, $nim, $nilai, $matakuliah, $dosen);
 
 //panggil method objek
-    echo "Nama : $nilai->nama<br>";
     echo "Nim :  $nilai->nim<br>";
+    echo "Nama : $nilai->nama<br>";
     echo "Nilai :  $nilai->nilai<br>";
     echo "Dosen :  $nilai->dosen<br>";
     echo "Mata Kuliah :  $nilai->matakuliah<br>";
@@ -98,3 +97,6 @@ if (isset($_POST['Input'])) {
 // $nilai->nilaiMahluk()
     // Fatal error: Call to protected method Manusia::nilaiMahluk()
 }
+?>
+</body>
+</html>
