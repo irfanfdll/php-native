@@ -51,42 +51,64 @@ if (isset($_POST['Input'])) {
     $jumlahpesanan = $_POST['jumlahpesanan'];
     $harga = $_POST['harga'];
     $sistempembayaran = $_POST['sistempembayaran'];
-
+    $harganormal = $harga * $jumlahpesanan;
     class pembayaran
     {
-        public function __construct($namabarang, $jumlahpesanan, $harga, $sistempembayaran)
+        public function __construct($namabarang, $jumlahpesanan, $harga, $sistempembayaran, $harganormal)
         {
             $this->namabarang = "$namabarang";
             $this->jumlahpesanan = $jumlahpesanan;
             $this->harga = $harga;
             $this->sistempembayaran = $sistempembayaran;
-
+            $this->harganormal = $harganormal;
         }
         public function discount()
         {
-            if ($this->sistempembayaran >= 150000) {
-                $hargadiscount = $this->sistempembayaran * 0.1;
-            } elseif ($this->sistempembayaran >= 250000) {
-                $hargadiscount = $this->sistempembayaran * 0.15;
+            if ($this->harganormal >= 150000) {
+                $hargadiscount = $this->harganormal * 0.1;
+            } elseif ($this->harga >= 250000) {
+                $hargadiscount = $this->harganormal * 0.15;
             } else {
-                $hargadiscount;
+                $hargadiscount = 0;
             }
+            return $hargadiscount;
         }
 
     }
 // turunkan class Malaikat ke chromebook
     class systemPembayaran extends pembayaran
     {
+        public function discountTambahan()
+        {
+            if ("Cash" == $this->sistempembayaran) {
+                $a = $this->discount();
+
+            } elseif ("M-Banking" == $this->sistempembayaran) {
+                $a = ($this->harganormal * 0.025) + $this->discount();
+
+            } elseif ("Gopay" == $this->sistempembayaran) {
+                $a = "";
+
+            } elseif ("PikUp" == $this->sistempembayaran) {
+                $a = "Beribadah Kepada Tuhan";
+
+            }
+
+            // $b = $this->nilaiMalaikat();
+            // $c = $this->nilaijin();
+            // $d = $this->nilaiSetan();
+            return $a;
+        }
         public function status()
         {
             if ("Cash" == $this->sistempembayaran) {
-                $a = "Menggangu Manusia";
+                $a = $this->harganormal - $this->discount();
 
             } elseif ("M-Banking" == $this->sistempembayaran) {
-                $a = "Ada Yang beribadah ada juga yang menyesatkan";
+                $a = $this->harganormal - $this->discountTambahan();
 
             } elseif ("Gopay" == $this->sistempembayaran) {
-                $a = "Beribadah Kepada Tuhan";
+                $a = "";
 
             } elseif ("PikUp" == $this->sistempembayaran) {
                 $a = "Beribadah Kepada Tuhan";
@@ -99,10 +121,14 @@ if (isset($_POST['Input'])) {
             return $a;
         }
     }
-    $output = new systemPembayaran($namabarang, $jumlahpesanan, $harga, $sistempembayaran);
+    $output = new systemPembayaran($namabarang, $jumlahpesanan, $harga, $sistempembayaran, $harganormal);
 
-//panggil method objek
-    echo "<tr><td>Nim</td> <td>:</td>  <td>" . $output->status() . "</td><tr>";
+    echo "<tr><td>Nama Barang </td> <td>:</td>  <td>" . $output->namabarang . "</td><tr>";
+    echo "<tr><td>Harga Barang </td> <td>:</td>  <td>" . $output->harga . "</td><tr>";
+    echo "<tr><td>Jumlah Pesanan </td> <td>:</td>  <td>" . $output->jumlahpesanan . "</td><tr>";
+    echo "<tr><td>Harga Normal </td> <td>:</td>  <td>" . $output->harganormal . "</td><tr>";
+    echo "<tr><td>Discount</td> <td>:</td>  <td>" . $output->discountTambahan() . "</td><tr>";
+    echo "<tr><td>Harga Total</td> <td>:</td>  <td>" . $output->status() . "</td><tr>";
 
 }
 
