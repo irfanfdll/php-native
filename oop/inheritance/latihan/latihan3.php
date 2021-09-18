@@ -87,37 +87,37 @@ if (isset($_POST['Input'])) {
                 $a = ($this->harganormal * 0.025) + $this->discount();
 
             } elseif ("Gopay" == $this->sistempembayaran) {
-                $a = "";
+                $a = ($this->harganormal * 0.1) + $this->discount();
 
             } elseif ("PikUp" == $this->sistempembayaran) {
-                $a = "Beribadah Kepada Tuhan";
+                $a = ($this->harganormal * 0.015) + $this->discount();
 
             }
 
-            // $b = $this->nilaiMalaikat();
-            // $c = $this->nilaijin();
-            // $d = $this->nilaiSetan();
+            return $a;
+        }
+        public function cashback()
+        {
+            if ("Cash" == $this->sistempembayaran) {
+                $a = "Tidak mendapatkan CashBack";
+
+            } elseif ("M-Banking" == $this->sistempembayaran) {
+                $a = "getDiskon";
+
+            } elseif ("Gopay" == $this->sistempembayaran) {
+                $a = "CashBack";
+
+            } elseif ("PikUp" == $this->sistempembayaran) {
+                $a = "getDiskon";
+
+            }
+
             return $a;
         }
         public function status()
         {
-            if ("Cash" == $this->sistempembayaran) {
-                $a = $this->harganormal - $this->discount();
-
-            } elseif ("M-Banking" == $this->sistempembayaran) {
-                $a = $this->harganormal - $this->discountTambahan();
-
-            } elseif ("Gopay" == $this->sistempembayaran) {
-                $a = "";
-
-            } elseif ("PikUp" == $this->sistempembayaran) {
-                $a = "Beribadah Kepada Tuhan";
-
-            }
-
-            // $b = $this->nilaiMalaikat();
-            // $c = $this->nilaijin();
-            // $d = $this->nilaiSetan();
+            $b = $this->harganormal - $this->discountTambahan();
+            $a = $b - $this->discount();
             return $a;
         }
     }
@@ -126,8 +126,10 @@ if (isset($_POST['Input'])) {
     echo "<tr><td>Nama Barang </td> <td>:</td>  <td>" . $output->namabarang . "</td><tr>";
     echo "<tr><td>Harga Barang </td> <td>:</td>  <td>" . $output->harga . "</td><tr>";
     echo "<tr><td>Jumlah Pesanan </td> <td>:</td>  <td>" . $output->jumlahpesanan . "</td><tr>";
+    echo "<tr><td>Metode Pembayaran </td> <td>:</td>  <td>" . $output->sistempembayaran . "</td><tr>";
     echo "<tr><td>Harga Normal </td> <td>:</td>  <td>" . $output->harganormal . "</td><tr>";
-    echo "<tr><td>Discount</td> <td>:</td>  <td>" . $output->discountTambahan() . "</td><tr>";
+    echo "<tr><td>Discount</td> <td>:</td>  <td>" . $output->discount() . "</td><tr>";
+    echo "<tr><td>" . $output->cashback() . "</td> <td>:</td>  <td>" . $output->discountTambahan() . "</td><tr>";
     echo "<tr><td>Harga Total</td> <td>:</td>  <td>" . $output->status() . "</td><tr>";
 
 }
