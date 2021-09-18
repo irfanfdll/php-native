@@ -14,23 +14,23 @@
                 <tr>
                     <td>Nama Barang</td>
                     <td>:</td>
-                    <td><input type="text" name="namabarang"></td>
+                    <td><input type="text" name="namabarang"  required></td>
                 </tr>
                 <tr>
                     <td>Harga</td>
                     <td>:</td>
-                    <td><input type="number" name="harga"></td>
+                    <td><input type="number" name="harga"min=1 required></td>
                 </tr>
                 <tr>
                     <td>Jumlah Pesanan</td>
                     <td>:</td>
-                    <td><input type="number" name="jumlahpesanan"></td>
+                    <td><input type="number" name="jumlahpesanan"min=1 required></td>
                 </tr>
 
                     <tr>
             <td>Sistem Pembayaran </td>
             <td> : </td>
-            <td><select type="text" name="sistempembayaran" >
+            <td><select type="text" name="sistempembayaran"required >
             <option value= "Cash" > Cash</option>
             <option value= "M-Banking" > M-Banking</option>
             <option value= "Gopay" > Gopay</option>
@@ -64,10 +64,10 @@ if (isset($_POST['Input'])) {
         }
         public function discount()
         {
-            if ($this->harganormal >= 150000) {
-                $hargadiscount = $this->harganormal * 0.1;
-            } elseif ($this->harga >= 250000) {
+            if ($this->harganormal >= 250000) {
                 $hargadiscount = $this->harganormal * 0.15;
+            } elseif ($this->harga >= 150000) {
+                $hargadiscount = $this->harganormal * 0.1;
             } else {
                 $hargadiscount = 0;
             }
@@ -81,16 +81,16 @@ if (isset($_POST['Input'])) {
         public function discountTambahan()
         {
             if ("Cash" == $this->sistempembayaran) {
-                $a = $this->discount();
+                $a = 0;
 
             } elseif ("M-Banking" == $this->sistempembayaran) {
-                $a = ($this->harganormal * 0.025) + $this->discount();
+                $a = ($this->harganormal * 0.025);
 
             } elseif ("Gopay" == $this->sistempembayaran) {
-                $a = ($this->harganormal * 0.1) + $this->discount();
+                $a = ($this->harganormal * 0.1);
 
             } elseif ("PikUp" == $this->sistempembayaran) {
-                $a = ($this->harganormal * 0.015) + $this->discount();
+                $a = ($this->harganormal * 0.015);
 
             }
 
